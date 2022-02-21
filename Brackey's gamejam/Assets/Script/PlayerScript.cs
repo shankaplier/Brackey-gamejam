@@ -17,8 +17,8 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb2d;
 
     //Variable to adjust movement speed if needed
-    [SerializeField] int movementSpeedVertical = 450;
-    [SerializeField] int movementSpeedHorizontal = 450;
+    [SerializeField] float movementSpeedVertical;
+    [SerializeField] float movementSpeedHorizontal;
     
     void Start()
     {
@@ -28,6 +28,8 @@ public class PlayerScript : MonoBehaviour
         rb2d.gravityScale = 0;
         //Sett linear drag to 10
         rb2d.drag = 10;
+        movementSpeedHorizontal = 450;
+        movementSpeedVertical = 450;
     }
 
     // Update is called once per frame
