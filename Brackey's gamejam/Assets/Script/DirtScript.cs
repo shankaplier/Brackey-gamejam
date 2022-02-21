@@ -19,6 +19,6 @@ public class DirtScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        Debug.Log("Woooo I'm hitting something hard and stiff");
+        
     }
 }
