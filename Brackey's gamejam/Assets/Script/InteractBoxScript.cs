@@ -72,12 +72,11 @@ public class InteractBoxScript : MonoBehaviour
                 {
                     Debug.LogError("Hey there is no empty object named ObjectPickupPosition");
                 }
-                
+               
             }
-
         }
-        
 
-        
+
     }
+         
 }
