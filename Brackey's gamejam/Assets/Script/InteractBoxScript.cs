@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractBoxScript : MonoBehaviour
 {
 
+    
+
     //An placeholder int for specifying which objecct is currently selected
     private int selectedObject;
 
@@ -31,23 +33,50 @@ public class InteractBoxScript : MonoBehaviour
      
     {
         GameObject collidedObject = collision.gameObject;
-        
-        //On pressing the E keey the dirt will change color respective to the object
-        //selected, signifying an action taking place
-        if (Input.GetKey(KeyCode.E))
+        Debug.Log(collidedObject.tag);
+
+
+        //Check what the object is
+        if (Input.GetKey(KeyCode.E)) 
         {
-            if (selectedObject == 1) 
+            //On pressing the E key the dirt will change color respective to the object
+            //selected, signifying an action taking place
+            if (collidedObject.tag == "Dirt")
             {
-                collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 0);
+                if (selectedObject == 1)
+                {
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 0);
+                }
+                else if (selectedObject == 2)
+                {
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 5, 253);
+                }
+                else if (selectedObject == 3)
+                {
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 211);
+                }
+                else
+                {
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(207, 203, 11, 255);
+                }
             }
-            else if (selectedObject == 2)
+
+            else if (collidedObject.tag == "Object")
             {
-                collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 5, 253);
-            }
-            else if (selectedObject == 3)
-            {
-                collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 211);
+                if (GameObject.Find("ObjectPickupPosition") != null)
+                {
+                    collidedObject.transform.parent = GameObject.Find("ObjectPickupPosition").transform;
+                    collidedObject.transform.position = GameObject.Find("ObjectPickupPosition").transform.position;
+                }
+                else 
+                {
+                    Debug.LogError("Hey there is no empty object named ObjectPickupPosition");
+                }
+               
             }
         }
+
+
     }
+         
 }
