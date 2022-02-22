@@ -17,8 +17,8 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb2d;
 
     //Variable to adjust movement speed if needed
-    [SerializeField] float movementSpeedVertical;
-    [SerializeField] float movementSpeedHorizontal;
+    [SerializeField] private float movementSpeedVertical;
+    [SerializeField] private float movementSpeedHorizontal;
     
     void Start()
     {
@@ -100,8 +100,6 @@ public class PlayerScript : MonoBehaviour
         {
             rb2d.AddForce(Vector2.left * movementSpeedHorizontal * Time.deltaTime, ForceMode2D.Force);
         }
-
     }
 
-    
 }
