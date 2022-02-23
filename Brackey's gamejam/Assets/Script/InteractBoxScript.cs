@@ -10,6 +10,8 @@ public class InteractBoxScript : ItemManagement
     public Sprite daisySeedBag;
     //Variable to hold an instance of ObjectPickupPosition.
     private GameObject objectPickupPosition;
+    //Variable to get the component Inventory attached on player.
+    private Inventory inventory;
 
     void Awake()
     {
@@ -17,15 +19,33 @@ public class InteractBoxScript : ItemManagement
         itemManagement = new ItemManagement();
         //Creating a instance of ObjectPickupPosition.
         objectPickupPosition = GameObject.Find("ObjectPickupPosition");
+        //Grabbing the component Inventory
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
 
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1) && GameObject.Find("Daisybutton(Clone)") != null) 
+        if (Input.GetKey(KeyCode.Alpha1) && inventory.isFull[0]) 
         {
-            itemManagement.CreateObject(daisySeedBag, objectPickupPosition, "Daisy");
+            itemManagement.CreateObject(inventory.spriteOfObject[0], objectPickupPosition, inventory.spriteName[0]);
         }
-        
+        else if (Input.GetKey(KeyCode.Alpha2) && inventory.isFull[1])
+        {
+            itemManagement.CreateObject(inventory.spriteOfObject[1], objectPickupPosition, inventory.spriteName[1]);
+        }
+        else if (Input.GetKey(KeyCode.Alpha3) && inventory.isFull[2])
+        {
+            itemManagement.CreateObject(inventory.spriteOfObject[2], objectPickupPosition, inventory.spriteName[2]);
+        }
+        else if (Input.GetKey(KeyCode.Alpha4) && inventory.isFull[3])
+        {
+            itemManagement.CreateObject(inventory.spriteOfObject[3], objectPickupPosition, inventory.spriteName[3]);
+        }
+        else if (Input.GetKey(KeyCode.Alpha5) && inventory.isFull[4])
+        {
+            itemManagement.CreateObject(inventory.spriteOfObject[4], objectPickupPosition, inventory.spriteName[4]);
+        }
+
 
     }
 
@@ -47,19 +67,23 @@ public class InteractBoxScript : ItemManagement
             {
                 if (itemManagement.daisyFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 0);
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1);
                 }
                 else if (itemManagement.lavenderFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 5, 253);
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
                 }
                 else if (itemManagement.roseFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 211);
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
                 }
                 else if(itemManagement.tulipFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(207, 203, 11, 255);
+                    collidedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
+                else if (itemManagement.canFunction)
+                {
+                    collidedObject.GetComponent<SpriteRenderer>().color = Color.gray;
                 }
             }
 

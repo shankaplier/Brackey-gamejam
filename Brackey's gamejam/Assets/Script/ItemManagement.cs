@@ -10,6 +10,7 @@ public class ItemManagement : MonoBehaviour
     public bool lavenderFunction;
     public bool roseFunction;
     public bool tulipFunction;
+    public bool canFunction;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class ItemManagement : MonoBehaviour
                 lavenderFunction = false;
                 roseFunction = false;
                 tulipFunction = false;
+                canFunction = false;
             }
             else if (Itemdisplayed == "Lavender")
             {
@@ -40,13 +42,15 @@ public class ItemManagement : MonoBehaviour
                 lavenderFunction = true;
                 roseFunction = false;
                 tulipFunction = false;
+                canFunction = false;
             }
-            else if (Itemdisplayed == "true")
+            else if (Itemdisplayed == "Rose")
             {
                 daisyFunction = false;
                 lavenderFunction = false;
                 roseFunction = true;
                 tulipFunction = false;
+                canFunction = false;
             }
             else if (Itemdisplayed == "Tulip")
             {
@@ -54,6 +58,16 @@ public class ItemManagement : MonoBehaviour
                 lavenderFunction = true;
                 roseFunction = false;
                 tulipFunction = true;
+                canFunction = false;
+
+            }
+            else if (Itemdisplayed == "Can")
+            {
+                daisyFunction = false;
+                lavenderFunction = true;
+                roseFunction = false;
+                tulipFunction = true;
+                canFunction = true;
 
             }
         }

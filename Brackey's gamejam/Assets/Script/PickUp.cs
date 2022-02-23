@@ -6,8 +6,9 @@ public class PickUp : MonoBehaviour
 {
 
     private Inventory inventory;
-    private GameObject player;
-    public GameObject itemButton;
+    public GameObject itemUI;
+    public Sprite objectSprite;
+    public string objectName;
 
 
     // Start is called before the first frame update
@@ -27,11 +28,14 @@ public class PickUp : MonoBehaviour
                 {
                     //Item can be added to inventory
                     inventory.isFull[i] = true;
-                    Instantiate(itemButton, inventory.slots[i].transform, false);
-                    Destroy(gameObject); 
+                    Instantiate(itemUI, inventory.slots[i].transform, false);
+                    inventory.spriteOfObject[i] = objectSprite;
+                    inventory.spriteName[i] = objectName;
+                    Destroy(gameObject);
                     break;
-                
+
                 }
+                
 
             }
         

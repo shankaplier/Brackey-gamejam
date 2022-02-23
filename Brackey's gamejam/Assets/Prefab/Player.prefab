@@ -210,7 +210,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &156944402039844880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +240,8 @@ MonoBehaviour:
   isFull: 
   slots:
   - {fileID: 0}
+  spriteOfObject: []
+  spriteName: []
 --- !u!1 &8765783087107090467
 GameObject:
   m_ObjectHideFlags: 0
