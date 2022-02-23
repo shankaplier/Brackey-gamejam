@@ -2,29 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractBoxScript : MonoBehaviour
+public class InteractBoxScript : ItemManagement
 {
+    //Variable to create an instance of PlayerScript.
+    ItemManagement itemManagement;
+    //Variable to hold the sprite of daisyseedbag.
+    public Sprite daisySeedBag;
+    //Variable to hold an instance of ObjectPickupPosition.
+    private GameObject objectPickupPosition;
+    //Variable to get the component Inventory attached on player.
+    private Inventory inventory;
 
-    
-
-    //An placeholder int for specifying which objecct is currently selected
-    private int selectedObject;
-
-    private void Update()
+    void Awake()
     {
-        // Selecting an object by pressing 1, 2 and 3
-        if (Input.GetKey(KeyCode.Alpha1))
+        //Creating a new PlayerScript to utilize the CreateObject function.
+        itemManagement = new ItemManagement();
+        //Creating a instance of ObjectPickupPosition.
+        objectPickupPosition = GameObject.Find("ObjectPickupPosition");
+        //Grabbing the component Inventory
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+    }
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha1) && inventory.isFull[0]) 
         {
-            selectedObject = 1;
+            itemManagement.CreateObject(inventory.spriteOfObject[0], objectPickupPosition, inventory.spriteName[0]);
         }
-        else if (Input.GetKey(KeyCode.Alpha2))
+        else if (Input.GetKey(KeyCode.Alpha2) && inventory.isFull[1])
         {
-            selectedObject = 2;
+            itemManagement.CreateObject(inventory.spriteOfObject[1], objectPickupPosition, inventory.spriteName[1]);
         }
-        else if (Input.GetKey(KeyCode.Alpha3))
+        else if (Input.GetKey(KeyCode.Alpha3) && inventory.isFull[2])
         {
-            selectedObject = 3;
+            itemManagement.CreateObject(inventory.spriteOfObject[2], objectPickupPosition, inventory.spriteName[2]);
         }
+        else if (Input.GetKey(KeyCode.Alpha4) && inventory.isFull[3])
+        {
+            itemManagement.CreateObject(inventory.spriteOfObject[3], objectPickupPosition, inventory.spriteName[3]);
+        }
+        else if (Input.GetKey(KeyCode.Alpha5) && inventory.isFull[4])
+        {
+            itemManagement.CreateObject(inventory.spriteOfObject[4], objectPickupPosition, inventory.spriteName[4]);
+        }
+
+
     }
 
 
@@ -43,37 +65,29 @@ public class InteractBoxScript : MonoBehaviour
             //selected, signifying an action taking place
             if (collidedObject.tag == "Dirt")
             {
-                if (selectedObject == 1)
+                if (itemManagement.daisyFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 0);
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1);
                 }
-                else if (selectedObject == 2)
+                else if (itemManagement.lavenderFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 5, 253);
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
                 }
-                else if (selectedObject == 3)
+                else if (itemManagement.roseFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(253, 0, 211);
+                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
                 }
-                else
+                else if(itemManagement.tulipFunction)
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(207, 203, 11, 255);
+                    collidedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
+                else if (itemManagement.canFunction)
+                {
+                    collidedObject.GetComponent<SpriteRenderer>().color = Color.gray;
                 }
             }
 
-            else if (collidedObject.tag == "Object")
-            {
-                if (GameObject.Find("ObjectPickupPosition") != null)
-                {
-                    collidedObject.transform.parent = GameObject.Find("ObjectPickupPosition").transform;
-                    collidedObject.transform.position = GameObject.Find("ObjectPickupPosition").transform.position;
-                }
-                else 
-                {
-                    Debug.LogError("Hey there is no empty object named ObjectPickupPosition");
-                }
-               
-            }
+            
         }
 
 

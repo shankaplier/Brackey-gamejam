@@ -17,8 +17,11 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb2d;
 
     //Variable to adjust movement speed if needed
-    [SerializeField] float movementSpeedVertical;
-    [SerializeField] float movementSpeedHorizontal;
+    [SerializeField] private float movementSpeedVertical;
+    [SerializeField] private float movementSpeedHorizontal;
+
+    //Variable to create get InteractionBox attached to player
+    private GameObject interactionBox;
     
     void Start()
     {
@@ -26,10 +29,12 @@ public class PlayerScript : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         // Set gravity on character to 0.
         rb2d.gravityScale = 0;
-        //Sett linear drag to 10
+        //Set linear drag to 10
         rb2d.drag = 10;
-        movementSpeedHorizontal = 450;
-        movementSpeedVertical = 450;
+        movementSpeedHorizontal = 2000;
+        movementSpeedVertical = 2000;
+        //Get interactionBox
+        interactionBox = GameObject.Find("InteractionBox");
     }
 
     // Update is called once per frame
@@ -40,44 +45,52 @@ public class PlayerScript : MonoBehaviour
         {
             keyDown = true;
             noKeys += 1;
+            interactionBox.transform.localPosition = new Vector3(0, -0.5f, 0);
         }
         else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))  
         {
             keyDown = false;
             noKeys -= 1;
+            interactionBox.transform.localPosition = new Vector3(0, -0.5f, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             keyUp = true;
             noKeys += 1;
+            interactionBox.transform.localPosition = new Vector3(0, 0.5f, 0);
         }
         else if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
         {
             keyUp = false;
             noKeys -= 1;
+            interactionBox.transform.localPosition = new Vector3(0, 0.5f, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             keyLeft = true;
             noKeys += 1;
+            interactionBox.transform.localPosition = new Vector3(-0.5f, 0, 0);
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
         {
             keyLeft = false;
             noKeys -= 1;
+            interactionBox.transform.localPosition = new Vector3(-0.5f, 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             keyRight = true;
             noKeys += 1;
+            interactionBox.transform.localPosition = new Vector3(0.5f, 0, 0);
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
         {
             keyRight = false;
             noKeys -= 1;
+            interactionBox.transform.localPosition = new Vector3(0.5f, 0, 0);
         }
     }
 
@@ -100,8 +113,6 @@ public class PlayerScript : MonoBehaviour
         {
             rb2d.AddForce(Vector2.left * movementSpeedHorizontal * Time.deltaTime, ForceMode2D.Force);
         }
-
     }
 
-    
 }

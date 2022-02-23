@@ -49,6 +49,9 @@ TagManager:
   - name: Player
     uniqueID: 3431567201
     locked: 0
+  - name: Objects
+    uniqueID: 4113999959
+    locked: 0
   - name: DirtPatch
     uniqueID: 3762094187
     locked: 0
