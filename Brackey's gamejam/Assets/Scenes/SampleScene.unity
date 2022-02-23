@@ -1434,6 +1434,10 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4707939121927679221, guid: 7147bbb89785f864fbb1d4380b723ff9, type: 3}
+      propertyPath: m_Name
+      value: InteractionBox
+      objectReference: {fileID: 0}
     - target: {fileID: 5337058578657667328, guid: 7147bbb89785f864fbb1d4380b723ff9, type: 3}
       propertyPath: m_SortingLayer
       value: 2
