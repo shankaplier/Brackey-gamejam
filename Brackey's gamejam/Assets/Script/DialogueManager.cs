@@ -12,24 +12,31 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    public Canvas Inventorygui;
+
+    private BossScript bossScript;
+
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+        bossScript = GameObject.Find("Boss").GetComponent<BossScript>();
         
     }
 
-    public void StartDialogue(Dialogue dialogue) 
+    public void StartDialogue(Dialogue dialogue, int startFrom, int endAt) 
     {
+        Inventorygui.enabled = false;
+
         animator.SetBool("IsOpen", true);
         
         nameText.text = dialogue.name;
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        for (int i = startFrom; i < endAt + 1; i++) 
         {
-            sentences.Enqueue(sentence);
+            sentences.Enqueue(dialogue.sentences[i]);
         }
 
         DisplayNextSentence();
@@ -64,6 +71,8 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue() 
     {
         animator.SetBool("IsOpen", false);
+        Inventorygui.enabled = true;
+        bossScript.notimes = 0;
     }
 
 }

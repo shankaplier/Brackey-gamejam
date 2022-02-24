@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7799830877771728877}
   - component: {fileID: 6082200224446045682}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: InteractionBox
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   lavenderFunction: 0
   roseFunction: 0
   tulipFunction: 0
-  daisySeedBag: {fileID: 0}
+  canFunction: 0
 --- !u!1 &6396019435021349887
 GameObject:
   m_ObjectHideFlags: 0
