@@ -6,13 +6,11 @@ public class InteractBoxScript : ItemManagement
 {
     //Variable to create an instance of PlayerScript.
     ItemManagement itemManagement;
-    //Variable to hold the sprite of daisyseedbag.
-    public Sprite daisySeedBag;
     //Variable to hold an instance of ObjectPickupPosition.
     private GameObject objectPickupPosition;
     //Variable to get the component Inventory attached on player.
     private Inventory inventory;
-
+    
     void Awake()
     {
         //Creating a new PlayerScript to utilize the CreateObject function.
@@ -21,7 +19,7 @@ public class InteractBoxScript : ItemManagement
         objectPickupPosition = GameObject.Find("ObjectPickupPosition");
         //Grabbing the component Inventory
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-
+        
     }
     void Update()
     {
@@ -49,15 +47,10 @@ public class InteractBoxScript : ItemManagement
 
     }
 
-
     private void OnTriggerStay2D(Collider2D collision)
-
-     
     {
         GameObject collidedObject = collision.gameObject;
-        Debug.Log(collidedObject.tag);
-
-
+ 
         //Check what the object is
         if (Input.GetKey(KeyCode.E)) 
         {
@@ -77,7 +70,7 @@ public class InteractBoxScript : ItemManagement
                 {
                     collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
                 }
-                else if(itemManagement.tulipFunction)
+                else if (itemManagement.tulipFunction)
                 {
                     collidedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                 }
@@ -85,12 +78,10 @@ public class InteractBoxScript : ItemManagement
                 {
                     collidedObject.GetComponent<SpriteRenderer>().color = Color.gray;
                 }
-            }
-
-            
+            }            
         }
-
-
     }
-         
+
+    
+
 }
