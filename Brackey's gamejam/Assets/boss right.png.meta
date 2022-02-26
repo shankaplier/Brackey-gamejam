@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: -8434455188679209415
     second: boss right_6
+  - first:
+      213: -573046615225362330
+    second: boss right_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -326,6 +329,27 @@ TextureImporter:
       bones: []
       spriteID: 93e43dc81bbc2fa80800000000000000
       internalID: -8434455188679209415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss right_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66890cbb3212c08f0800000000000000
+      internalID: -573046615225362330
       vertices: []
       indices: 
       edges: []
