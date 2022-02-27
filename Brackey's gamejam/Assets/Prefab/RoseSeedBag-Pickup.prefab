@@ -113,6 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb138bdd4c86dc4386c81603c46a820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemUI: {fileID: 1974113466713629339, guid: cbebb185db5025f4baf09e9485f7459a, type: 3}
+  itemUI: {fileID: 8730705527731219909, guid: 95322a4366093164a8025602655ad98f, type: 3}
   objectSprite: {fileID: 21300000, guid: 6e71960dc54db604d8a1d6549c837ebd, type: 3}
   objectName: Rose

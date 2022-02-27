@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb138bdd4c86dc4386c81603c46a820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemUI: {fileID: 7018057105301567731, guid: f83927ca18e6f224585c73ae9449c992, type: 3}
+  itemUI: {fileID: 3956478706666449581, guid: f83927ca18e6f224585c73ae9449c992, type: 3}
   objectSprite: {fileID: 21300000, guid: d448a43f03ed59c4c9bdec7ed23b447c, type: 3}
   objectName: Daisy
 --- !u!58 &2659878443877463680
