@@ -10,6 +10,12 @@ public class InteractBoxScript : ItemManagement
     private GameObject objectPickupPosition;
     //Variable to get the component Inventory attached on player.
     private Inventory inventory;
+    //Variable to hold the seed sprite
+    public Sprite Seed;
+    //Variable to hols the dirt sprite
+    public Sprite Dirt;
+    //Variable to create a Pick up instance
+    PickUp pickUP;
     
     void Awake()
     {
@@ -19,6 +25,8 @@ public class InteractBoxScript : ItemManagement
         objectPickupPosition = GameObject.Find("ObjectPickupPosition");
         //Grabbing the component Inventory
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        //Creating a new pickUp component to utilize the PutIninventory function.
+        pickUP = new PickUp();
         
     }
     void Update()
@@ -50,7 +58,8 @@ public class InteractBoxScript : ItemManagement
     private void OnTriggerStay2D(Collider2D collision)
     {
         GameObject collidedObject = collision.gameObject;
- 
+        
+
         //Check what the object is
         if (Input.GetKey(KeyCode.E)) 
         {
@@ -58,30 +67,78 @@ public class InteractBoxScript : ItemManagement
             //selected, signifying an action taking place
             if (collidedObject.tag == "Dirt")
             {
-                if (itemManagement.daisyFunction)
+                DirtScript dirtScript = collidedObject.GetComponent<DirtScript>();
+                if (itemManagement.daisyFunction && dirtScript.DirtState == "Plain")
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(0, 1, 1);
+                    collidedObject.GetComponent<SpriteRenderer>().sprite = Seed;
+                    dirtScript.DirtState = "Planted";
+                    dirtScript.SeedPlanted = "Daisy";
+                    dirtScript.noofPlants = 0;
                 }
-                else if (itemManagement.lavenderFunction)
+                else if (itemManagement.lavenderFunction && dirtScript.DirtState == "Plain")
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
+                    collidedObject.GetComponent<SpriteRenderer>().sprite = Seed;
+                    dirtScript.DirtState = "Planted";
+                    dirtScript.SeedPlanted = "Lavender";
+                    dirtScript.noofPlants = 0;
                 }
-                else if (itemManagement.roseFunction)
+                else if (itemManagement.roseFunction && dirtScript.DirtState == "Plain")
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
+                    collidedObject.GetComponent<SpriteRenderer>().sprite = Seed;
+                    dirtScript.DirtState = "Planted";
+                    dirtScript.SeedPlanted = "Rose";
+                    dirtScript.noofPlants = 0;
                 }
-                else if (itemManagement.tulipFunction)
+                else if (itemManagement.tulipFunction && dirtScript.DirtState == "Plain")
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    collidedObject.GetComponent<SpriteRenderer>().sprite = Seed;
+                    dirtScript.DirtState = "Planted";
+                    dirtScript.SeedPlanted = "Tulip";
+                    dirtScript.noofPlants = 0;
                 }
-                else if (itemManagement.canFunction)
+                else if (itemManagement.canFunction && dirtScript.DirtState == "Planted")
                 {
-                    collidedObject.GetComponent<SpriteRenderer>().color = Color.gray;
-                }
+                    if (dirtScript.noofPlants == 0)
+                    {
+                        if (dirtScript.SeedPlanted == "Daisy") 
+                        {
+                            StartCoroutine(wait(dirtScript, 5));
+                        }
+                        else if (dirtScript.SeedPlanted == "Lavender")
+                        {
+                            StartCoroutine(wait(dirtScript, 8));
+                        }
+                        else if (dirtScript.SeedPlanted == "Rose")
+                        {
+                            StartCoroutine(wait(dirtScript, 9));
+                        }
+                        if (dirtScript.SeedPlanted == "Tulip")
+                        {
+                            StartCoroutine(wait(dirtScript, 11));
+                        }
+                    }
+
+                }  
+            
             }            
         }
+
+        
+            
     }
 
-    
+
+    IEnumerator wait(DirtScript dirtScript, int waitnumber)
+    {
+        yield return new WaitForSeconds(waitnumber);
+        if (dirtScript.noofPlants == 0) 
+        {
+            Instantiate(dirtScript.Planttogrow, dirtScript.gameObject.transform, false);
+            dirtScript.noofPlants += 1;
+            dirtScript.gameObject.GetComponent<SpriteRenderer>().sprite = Dirt;
+            dirtScript.DirtState = "Plain";
+        }
+        
+    }
 
 }
