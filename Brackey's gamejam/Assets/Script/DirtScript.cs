@@ -4,21 +4,40 @@ using UnityEngine;
 
 public class DirtScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public string SeedPlanted;
+    public string DirtState;
+    public GameObject Planttogrow;
+    public GameObject Daisy;
+    public GameObject Lavender;
+    public GameObject Rose;
+    public GameObject Tulip;
+    public int noofPlants;
+
+    private void Awake()
     {
-        
+        SeedPlanted = "None";
+        DirtState = "Plain";
+        noofPlants = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
+        if (SeedPlanted == "Daisy") 
+        {
+            Planttogrow = Daisy;
+        }
+        else if (SeedPlanted == "Lavender")
+        {
+            Planttogrow = Lavender;
+        }
+        else if (SeedPlanted == "Rose")
+        {
+            Planttogrow = Rose;
+        }
+        else if (SeedPlanted == "Tulip")
+        {
+            Planttogrow = Tulip;
+        }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        
     }
 }

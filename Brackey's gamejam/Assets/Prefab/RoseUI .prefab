@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8534033154608887792
+--- !u!1 &8599602974008404729
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2697646108762960278}
-  - component: {fileID: 6568273898338303788}
-  - component: {fileID: 3165791429930875170}
+  - component: {fileID: 4930533487611832187}
+  - component: {fileID: 3616390715100781228}
+  - component: {fileID: 4964220252310973788}
   m_Layer: 5
-  m_Name: WateringCanUI
+  m_Name: 'RoseUI '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &2697646108762960278
+--- !u!224 &4930533487611832187
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534033154608887792}
+  m_GameObject: {fileID: 8599602974008404729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,22 +36,22 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 45, y: 45}
-  m_Pivot: {x: 0.5, y: 0.3565998}
---- !u!222 &6568273898338303788
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3616390715100781228
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534033154608887792}
+  m_GameObject: {fileID: 8599602974008404729}
   m_CullTransparentMesh: 1
---- !u!114 &3165791429930875170
+--- !u!114 &4964220252310973788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534033154608887792}
+  m_GameObject: {fileID: 8599602974008404729}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 033473f07d7efc0439998421955be259, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82de73b14dd2d7c47ac21148c6aaaed6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
